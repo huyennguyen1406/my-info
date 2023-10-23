@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  const [firstName, setFirtsName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const fullName = firstName + ' ' + lastName;
+
+  function handleFirstNameChange(e) {
+    setFirtsName(e.target.value);
+  }
+
+  function handleLastNameChange(e) {
+    setLastName(e.target.value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h2>Let's check you in</h2>
+    <label>
+      First name:{' '}
+      <input
+      value={firstName}
+      onChange={handleFirstNameChange}
+      />
+    </label>
+    <label>
+      Last name: {' '}
+      <input
+      value={lastName}
+      onChange={handleLastNameChange}
+      />
+    </label>
+    <p>
+      Your ticket will be issued to: <b>{fullName}</b>
+    </p>
+    </>
   );
 }
-
-export default App;
